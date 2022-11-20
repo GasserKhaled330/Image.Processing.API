@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to #{title}
+    div.full-images-grid
+        each fileName in fileNames
+            div.image
+                img(src='images/'+ fileName + '.jpg')
+                p  File Name: #{fileName}
