@@ -1,0 +1,21 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.full-images-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+}
