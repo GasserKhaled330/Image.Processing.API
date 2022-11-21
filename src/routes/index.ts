@@ -5,7 +5,7 @@ import path from 'path';
 
 const routes = express.Router();
 
-routes.get('/', (req: Request, res: Response) => {
+routes.get('/', (req: Request, res: Response): void => {
   const imagesFilenames: string[] = fs
     .readdirSync(path.resolve('public/images/'))
     .map((filename: string) => filename.split('.')[0]);

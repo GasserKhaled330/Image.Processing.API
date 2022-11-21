@@ -5,7 +5,7 @@ import fs from 'fs';
 
 const images = express.Router();
 
-images.get('/', async (req: Request, res: Response) => {
+images.get('/', async (req: Request, res: Response): Promise<void> => {
   try {
     const filename = req.query.filename as string;
     const imageHeight = parseInt(req.query.height as string);

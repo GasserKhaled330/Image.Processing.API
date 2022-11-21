@@ -3,7 +3,7 @@ import Image from '../utilities/Image';
 describe('Testing image processing', () => {
     let imageObj1: Image;
     let imageObj2: Image;
-    beforeAll(() => {
+    beforeAll((): void => {
         imageObj1 = new Image(200, 200, 'alaska');
         imageObj2 = new Image(300, 300, 'santamonica');
     });
