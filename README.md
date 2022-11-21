@@ -25,7 +25,7 @@ The following actions can be executed through npm scripts:
 ```
 npm run build
 ```
-
+![running example](https://github.com/GasserKhaled330/Image.Processing.API/blob/main/screenshoots/run%20bulid.png)
 The transpiled code will be available in the `build` folder.
 
 #### Testing And Transpiling typescript to javascript
@@ -35,7 +35,7 @@ A jasmine testing suite can be used to validate the endpoint as well as the imag
 ```
 npm run test
 ```
-
+![running test and build example](https://github.com/GasserKhaled330/Image.Processing.API/blob/main/screenshoots/tests%20run.png)
 #### Formatting
 
 The code can be automatically formatted using prettier. The formatting options can be customised by editin the `.prettierrc`file.
@@ -51,7 +51,7 @@ The code can ba automatically linted using ESlint. Note that ESlint will also us
 ```
 npm run lint
 ```
-
+![running example](https://github.com/GasserKhaled330/Image.Processing.API/blob/main/screenshoots/run%20lint.png)
 ### Running the server
 
 To execute the application use the following command in terminal:
@@ -59,7 +59,7 @@ To execute the application use the following command in terminal:
 ```
 npm run start
 ```
-
+![running example](https://github.com/GasserKhaled330/Image.Processing.API/blob/main/screenshoots/run%20start%20.png)
 the app will then be available on port 3000 by default, but that can be changed by editing the port constant value in the app.ts file.
 
 ---
@@ -76,10 +76,11 @@ The endpoint is `api/images` and requires three query params:
 | height      |                        it should be a positive integer                        |
 | width       |                        it should be a positive integer                        |
 
-Note that full instructions including a preview of all the available images and their filenames can be accessed using the main API endpoint. Assuming the app is running on port 3000 that would be:
+Note that a preview of all the available images and their filenames can be accessed using the main API endpoint. Assuming the app is running on port 3000 that would be:
 
 [http://localhost:3000/api](http://localhost:3000/api)
-
+![running example](https://github.com/GasserKhaled330/Image.Processing.API/blob/main/screenshoots/home%20page.png)
 An example of a correct endpoint call would be:
 
-[http://localhost:3000/api/images?filename=palmtunnel&height=250&width=220](http://localhost:3000/api/images?filename=palmtunnel&height=250&width=220)
+[http://localhost:3000/api/images?filename=fjord&height=100&width=200](http://localhost:3000/api/images?filename=fjord&height=100&width=200)
+![running example](https://github.com/GasserKhaled330/Image.Processing.API/blob/main/screenshoots/result.png)
