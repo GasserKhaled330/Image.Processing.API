@@ -1,4 +1,4 @@
-import express from 'express';
+import express, {Request,Response} from 'express';
 import indexRouter from './routes/index';
 import path from 'path';
 
@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 
-app.get('/', (req: express.Request, res: express.Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.status(200).redirect('/api');
 });
 

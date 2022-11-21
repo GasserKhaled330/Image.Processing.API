@@ -1,24 +1,27 @@
-import express from 'express';
+import express , {Request, Response} from 'express';
 import path from 'path';
 import Image from '../../utilities/Image';
+import fs from 'fs';
 
 const images = express.Router();
 
-images.get('/', async (req: express.Request, res: express.Response) => {
+images.get('/', async (req: Request, res: Response) => {
   try {
-    const filename = req.query.filename as unknown as string;
-    const height = parseInt(req.query.height as unknown as string);
-    const width = parseInt(req.query.width as unknown as string);
-
-    const ImageObj = new Image(width, height);
-    const outputImgInfo = await ImageObj.resizeImage(filename);
-    const outputImgPath: string = path.resolve(
-        `./public/processed-images/${filename}${ImageObj.width}x${ImageObj.height}.${outputImgInfo.format}`);
-
-    res.sendFile(outputImgPath);
+    const filename = req.query.filename as string;
+    const imageHeight = parseInt(req.query.height as string);
+    const imageWidth = parseInt(req.query.width as string);
+    const ImgPath = path.resolve(
+      `./public/processed-images/${filename}${imageWidth}x${imageHeight}.jpeg`);
+    
+    if (!fs.existsSync(ImgPath)) {
+      const ImageObj = new Image(imageWidth, imageHeight, filename);
+      await ImageObj.resizeImage();
+      res.sendFile(ImgPath);
+    } 
+    res.sendFile(ImgPath);
   } catch (e) {
-    // @ts-ignore
     res.render('error', { message: 'Input File is Missing!' });
+    throw new Error('Input File is Missing!');
   }
 });
 
