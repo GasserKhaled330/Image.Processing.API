@@ -1,14 +1,11 @@
 import express, {Request,Response} from 'express';
 import images from './api/images';
-import fs from 'fs';
-import path from 'path';
+import getImagesFilenames from '../utilities/getImgFileNames';
 
 const routes = express.Router();
 
 routes.get('/', (req: Request, res: Response): void => {
-  const imagesFilenames: string[] = fs
-    .readdirSync(path.resolve('public/images/'))
-    .map((filename: string) => filename.split('.')[0]);
+  const imagesFilenames: string[] = getImagesFilenames(); 
   res.render('index', { fileNames: imagesFilenames, title: 'image processing api' });
 });
 

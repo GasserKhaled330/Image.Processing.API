@@ -18,4 +18,5 @@ app.get('/', (req: Request, res: Response): void => {
 app.listen(port, (): void => {
   console.log(`Listening to requests on http://localhost:${port}`);
 });
+
 export default app;
