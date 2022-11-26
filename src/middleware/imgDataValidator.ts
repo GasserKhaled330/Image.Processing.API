@@ -1,35 +1,23 @@
 import {Request, Response} from 'express';
 import getImagesFilenames from '../utilities/getImgFileNames';
 
-const imgWidthAndHeightValidtor = (imageHeight: string, imageWidth: string): boolean => {
-    let isvalid: boolean;
-    if (isFinite(Number(imageHeight)) && isFinite(Number(imageWidth))) {
-        isvalid = true;
-    } else {
-        isvalid = false;
-    }
-    return isvalid;
+const imgWidthAndHeightValidator = (imageHeight: string, imageWidth: string): boolean => {
+    return isFinite(Number(imageHeight)) && isFinite(Number(imageWidth));
 };
 
-const imgFileNameValidtor = (filename: string): boolean => {
-    let isvalid: boolean;
+const imgFileNameValidator = (filename: string): boolean => {
     const imagesFilenames: string[] = getImagesFilenames();
-    if (imagesFilenames.includes(filename)) {
-        isvalid = true;
-    } else {
-        isvalid = false;
-    }
-    return isvalid;
+    return imagesFilenames.includes(filename);
 };
 
-const ImageValidtor =  (req: Request, res: Response, next: () => void): void => {
+const ImageValidator =  (req: Request, res: Response, next: () => void): void => {
     const filename = req.query.filename as string;
     const imageHeight = req.query.height as string;
     const imageWidth = req.query.width as string;
-    if (!imgFileNameValidtor(filename)) {
+    if (!imgFileNameValidator(filename)) {
         res.render('error', { message: 'Error: Input File is Missing! please Enter A valid File Name' });
     } else {
-        if (!imgWidthAndHeightValidtor(imageHeight, imageWidth)) {
+        if (!imgWidthAndHeightValidator(imageHeight, imageWidth)) {
             res.render('error', { message: 'Error: please Enter a valid number for width and height' });
         } else {
             next();
@@ -37,4 +25,4 @@ const ImageValidtor =  (req: Request, res: Response, next: () => void): void => 
     }
 };
 
-export { ImageValidtor };
+export { ImageValidator };
